@@ -49,11 +49,11 @@ function generatePassword () {
     else {
       symbolsEl = false;
   }
-    var minimumCount = 0;
-    var minimumUpp = '';
-    var minimumDow = '';
-    var minimumNumb = '';
-    var minimumSymb = '';
+    var count = 0;
+    var uppercase = '';
+    var lowercase= '';
+    var numbers = '';
+    var symbols = '';
 
 // Generate Random Functions array
 
@@ -78,35 +78,35 @@ function generatePassword () {
 
   // count responses to prompts 
     if (uppercaseEl === true) {
-      minimumUpp = functionArr.getRandUpper();
+      uppercase = functionArr.getRandUpper();
       minimumCount++;
     }
 
     if (lowercaseEl === true) {
-      minimumDow = functionArr.getRandLow();
+      lowercase = functionArr.getRandLow();
       minimumCount++;
     }
 
     if (numbersEl === true) {
-      minimumNumb = functionArr.getRandNum();
+      numbers = functionArr.getRandNum();
       minimumCount++;
     }
 
     if (symbolsEl === true) {
-      minimumSymb = functionArr.getRandSymb();
+      symbols = functionArr.getRandSymb();
       minimumCount++;
     }
 
     var randomPasswordGenerated = '';
 
     // add length to be less than the amount of trues and create visible password 
-    for (var i = 0; i < (parseInt(lengthEl) - minimumCount); i++) {
-      var randomNumberPicked = Math.floor(Math.random() * 4);
-      randomPasswordGenerated +=randomNumberPicked;
+    for (var i = 0; i < (parseInt(lengthEl) - count); i++) {
+      var count= Math.floor(Math.random() * 4);
+      randomPasswordGenerated += count;
     }
-      randomPasswordGenerated += minimumUpp;
-      randomPasswordGenerated += minimumDow;
-      randomPasswordGenerated += minimumNumb;
-      randomPasswordGenerated += minimumSymb;
+      randomPasswordGenerated += uppercase;
+      randomPasswordGenerated += lowercase;
+      randomPasswordGenerated += numbers;
+      randomPasswordGenerated += symbols;
     return randomPasswordGenerated;
   }
