@@ -96,7 +96,7 @@ function generatePassword () {
       symbols = functionArr.getRandSymb();
       minimumCount++;
     }
-
+    
     var randomPasswordGenerated = '';
 
     // add length to be less than the amount of trues and create visible password 
