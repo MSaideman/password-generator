@@ -101,12 +101,12 @@ function generatePassword () {
 
     // add length to be less than the amount of trues and create visible password 
     for (var i = 0; i < (parseInt(lengthEl) - count); i++) {
-      var count= Math.floor(Math.random() * 4);
-      randomPasswordGenerated += count;
+      var randomNumber= Math.floor(Math.random() * 4);
+      randomPasswordGenerated += randomNumber;
     }
       randomPasswordGenerated += uppercase;
       randomPasswordGenerated += lowercase;
       randomPasswordGenerated += numbers;
       randomPasswordGenerated += symbols;
     return randomPasswordGenerated;
-  }
+  }å
