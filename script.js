@@ -79,22 +79,22 @@ function generatePassword () {
   // count responses to prompts 
     if (uppercaseEl === true) {
       uppercase = functionArr.getRandUpper();
-      minimumCount++;
+      count++;
     }
 
     if (lowercaseEl === true) {
       lowercase = functionArr.getRandLow();
-      minimumCount++;
+      count++;
     }
 
     if (numbersEl === true) {
       numbers = functionArr.getRandNum();
-      minimumCount++;
+      count++;
     }
 
     if (symbolsEl === true) {
       symbols = functionArr.getRandSymb();
-      minimumCount++;
+      count++;
     }
     
     var randomPasswordGenerated = '';
