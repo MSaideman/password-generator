@@ -14,99 +14,69 @@ function writePassword() {
 
 // Prompt Questions that store as numbers and bouleans values
 function generatePassword () {
-  var lengthEl = prompt("How many characters would you like your password to be?")
-  while (lengthEl < 8 || lengthEl > 128) {
-    lengthEl = prompt("Length must be 8-128 characters. How many characters would you like your password to be?");
+  var passwordLength = prompt("How many characters would you like your password to be?")
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = prompt("Length must be 8-128 characters. How many characters would you like your password to be?");
   }
-  var uppercaseEl = confirm("Do you want uppercase letters in your password?")
-    if (uppercaseEl === true) {
-      var uppercaseEl = true;
-    }
-    else {
-      var uppercaseEl = false;
-    }
+  var upperChars = confirm("Do you want uppercase letters in your password?");
 
-  var lowercaseEl = confirm("Do you want lowercase letters in your password?")
-    if (lowercaseEl === true) {
-      var lowercaseEl = true;
-    }
-    else {
-      var lowercaseEl = false;
-    }
+  var lowerChars = confirm("Do you want lowercase letters in your password?");
 
-  var numbersEl = confirm("Do you want to include numbers?")
-    if (numbersEl === true) {
-      var numbersEl = true;
-    }
-    else {
-      var numbersEl = false;
-    }
+  var numberChars = confirm("Do you want to include numbers?");
 
-  var symbolsEl = confirm("Do you want to include symbols?")
-    if (symbolsEl === true) {
-      symbolsEl = true;
-    }
-    else {
-      symbolsEl = false;
-  }
+  var symbolsChars = confirm("Do you want to include symbols?");
+
     var count = 0;
-    var uppercase = '';
-    var lowercase= '';
-    var numbers = '';
-    var symbols = '';
+
+// concatonate results of random functions into single variable 
+    var chosenSymbols = '';
 
 // Generate Random Functions array
 
     var functionArr = {
     getRandUpper: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+      return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     },
     
     getRandLow: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+      return 'abcdefghijklmnopqrstuvwxyz';
     },
     
     getRandNum: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 9) + 48);
+      return '0123456789';
     },
     
     getRandSymb: function() {
-        const symbols = '!@#$%^&*(){}[]=<>/,.'
-        return symbols[Math.floor(Math.random() * symbols.length)];
+        return '!@#$%^&*(){}[]=<>/,.';
     }
   };
 
   // count responses to prompts 
-    if (uppercaseEl === true) {
-      uppercase = functionArr.getRandUpper();
-      count++;
+    if (upperChars) {
+      chosenSymbols += functionArr.getRandUpper();
     }
 
-    if (lowercaseEl === true) {
-      lowercase = functionArr.getRandLow();
-      count++;
+    if (lowerChars === true) {
+      chosenSymbols += functionArr.getRandLow();
     }
 
-    if (numbersEl === true) {
-      numbers = functionArr.getRandNum();
-      count++;
+    if (numberChars === true) {
+      chosenSymbols += functionArr.getRandNum();
     }
 
-    if (symbolsEl === true) {
-      symbols = functionArr.getRandSymb();
-      count++;
+    if (symbolsChars === true) {
+      chosenSymbols += functionArr.getRandSymb();
     }
-    
+
     var randomPasswordGenerated = '';
 
     // add length to be less than the amount of trues and create visible password 
-    for (var i = 0; i < (parseInt(lengthEl) - count); i++) {
-      var randomNumber= Math.floor(Math.random() * 4);
-      randomPasswordGenerated += randomNumber;
+    for (var i = 0; i < parseInt(passwordLength) - count; i++) {
+      var symbolIndex = Math.floor(Math.random() * chosenSymbols.length); 
+      randomPasswordGenerated += chosenSymbols[symbolIndex];
     }
-      randomPasswordGenerated += uppercase;
-      randomPasswordGenerated += lowercase;
-      randomPasswordGenerated += numbers;
-      randomPasswordGenerated += symbols;
-    return randomPasswordGenerated;
-  }å
+    return randomPasswordGenerated; 
+    }
+  
+
+
